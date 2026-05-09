@@ -4,20 +4,34 @@
 <head>
   <title>Darren Pinheiro's Page</title>
   <style>
-    /* --- NEW PROFESSIONAL STYLING START --- */
+    /* --- NEW FLOATING CARD BACKGROUND --- */
     body {
       font-family: 'Segoe UI', Helvetica, Arial, sans-serif; 
-      background-color: #f8f9fa; /* Soft off-white */
+      /* A beautiful, soft purple-to-blue gradient background */
+      background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
       color: #333333; 
       text-align: center;
-      max-width: 700px; /* Keeps reading width comfortable */
-      margin: 60px auto; /* Centers the whole page */
-      line-height: 1.6; /* Adds breathing room between lines */
-      padding: 0 20px; 
+      margin: 0;
+      
+      /* These 3 lines perfectly center the card in the middle of the screen */
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* --- THE WHITE FLOATING CARD --- */
+    .card {
+      background-color: white;
+      padding: 50px 40px;
+      border-radius: 20px; /* Smooth rounded corners */
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1); /* The soft drop shadow */
+      max-width: 600px;
+      width: 90%; /* Keeps it looking great on mobile phones */
     }
 
     h1 {
-      color: #333333;
+      margin-top: 20px;
       margin-bottom: 5px;
       font-size: 2.5rem;
     }
@@ -29,24 +43,26 @@
 
     p {
       font-size: 18px;
+      line-height: 1.6;
+      color: #555555; /* Slightly softer gray for paragraph text */
     }
-    /* --- NEW PROFESSIONAL STYLING END --- */
 
+    /* --- YOUR AWESOME ANIMATIONS --- */
     .profile-img {
-      width: 200px;
-      height: 200px;
+      width: 180px; /* Slightly smaller to fit the card beautifully */
+      height: 180px;
       border-radius: 50%;
       object-fit: cover;
-      /* This tells the browser to make the animation last 0.3 seconds */
       transition: transform 0.3s ease, box-shadow 0.3s ease; 
     }
 
-    /* This is the new hover effect */
     .profile-img:hover {
-      /* This scales the image up by 5% */
       transform: scale(1.05); 
-      /* This adds a soft dark shadow underneath */
       box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); 
+    }
+
+    .social-links {
+      margin-top: 40px;
     }
 
     .social-links a {
@@ -54,32 +70,36 @@
       text-decoration: none;
       color: #333333;
       font-weight: bold;
-      display: inline-block; /* This allows the link to move up and down */
+      display: inline-block; 
       transition: transform 0.3s ease, color 0.3s ease;
     }
 
-    /* The new hover effect to make the links bounce and change color */
     .social-links a:hover {
-      color: #8b5cf6; /* Changes the text to a nice purple */
-      transform: translateY(-5px); /* Moves the link up by 5 pixels */
+      color: #8b5cf6; 
+      transform: translateY(-5px); 
     }
   </style>
 </head>
 
 <body>
 
-  <img src="Profpic.jpg" alt="Darren Pinheiro" class="profile-img">
-  <h1>Darren Pinheiro</h1>
+  <div class="card">
+    
+    <img src="Profpic.jpg" alt="Darren Pinheiro" class="profile-img">
+    <h1>Darren Pinheiro</h1>
 
-  <h2>About Me</h2>
-  <p>Welcome to my page! I'm a developer building things from scratch and exploring the world of web development.</p>
+    <h2>About Me</h2>
+    <p>Welcome to my page! I'm a developer building things from scratch and exploring the world of web development.</p>
 
-  <div class="social-links">
-    <p>Connect with me:</p>
-    <a href="https://www.linkedin.com/in/darren-pinheiro-0480241a3">LinkedIn</a>
-    <a href="https://github.com/DarrenPinheiro/my-first-repo">GitHub</a>
-    <a href="mailto:darren.pinhiro@trenser.com">Email Me</a>
+    <div class="social-links">
+      <p style="font-size: 14px; color: #888;">Connect with me:</p>
+      <a href="https://www.linkedin.com/in/darren-pinheiro-0480241a3">LinkedIn</a>
+      <a href="https://github.com/DarrenPinheiro/my-first-repo">GitHub</a>
+      <a href="mailto:darren.pinhiro@trenser.com">Email Me</a>
+    </div>
+
   </div>
+
 </body>
 
 </html>
