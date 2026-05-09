@@ -15,18 +15,37 @@
       color: #333333;
     }
 
-    .profile-img {
-      width: 200px;
-      border-radius: 50%;
-      margin-bottom: 20px;
-    }
+.profile-img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  /* This tells the browser to make the animation last 0.3 seconds */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
 
-    .social-links a {
-      margin: 0 10px;
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
-    }
+/* This is the new hover effect */
+.profile-img:hover {
+  /* This scales the image up by 5% */
+  transform: scale(1.05); 
+  /* This adds a soft dark shadow underneath */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); 
+}
+
+.social-links a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #333333;
+  font-weight: bold;
+  display: inline-block; /* This allows the link to move up and down */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* The new hover effect to make the links bounce and change color */
+.social-links a:hover {
+  color: #8b5cf6; /* Changes the text to a nice purple */
+  transform: translateY(-5px); /* Moves the link up by 5 pixels */
+}
   </style>
 </head>
 
