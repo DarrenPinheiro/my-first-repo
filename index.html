@@ -4,48 +4,65 @@
 <head>
   <title>Darren Pinheiro's Page</title>
   <style>
+    /* --- NEW PROFESSIONAL STYLING START --- */
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Helvetica, Arial, sans-serif; 
+      background-color: #f8f9fa; /* Soft off-white */
+      color: #333333; 
       text-align: center;
-      margin-top: 50px;
-      background-color: rgb(232, 189, 255);
+      max-width: 700px; /* Keeps reading width comfortable */
+      margin: 60px auto; /* Centers the whole page */
+      line-height: 1.6; /* Adds breathing room between lines */
+      padding: 0 20px; 
     }
 
     h1 {
       color: #333333;
+      margin-bottom: 5px;
+      font-size: 2.5rem;
     }
 
-.profile-img {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  object-fit: cover;
-  /* This tells the browser to make the animation last 0.3 seconds */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; 
-}
+    h2 {
+      color: #555555;
+      margin-top: 30px;
+    }
 
-/* This is the new hover effect */
-.profile-img:hover {
-  /* This scales the image up by 5% */
-  transform: scale(1.05); 
-  /* This adds a soft dark shadow underneath */
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); 
-}
+    p {
+      font-size: 18px;
+    }
+    /* --- NEW PROFESSIONAL STYLING END --- */
 
-.social-links a {
-  margin: 0 10px;
-  text-decoration: none;
-  color: #333333;
-  font-weight: bold;
-  display: inline-block; /* This allows the link to move up and down */
-  transition: transform 0.3s ease, color 0.3s ease;
-}
+    .profile-img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      /* This tells the browser to make the animation last 0.3 seconds */
+      transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    }
 
-/* The new hover effect to make the links bounce and change color */
-.social-links a:hover {
-  color: #8b5cf6; /* Changes the text to a nice purple */
-  transform: translateY(-5px); /* Moves the link up by 5 pixels */
-}
+    /* This is the new hover effect */
+    .profile-img:hover {
+      /* This scales the image up by 5% */
+      transform: scale(1.05); 
+      /* This adds a soft dark shadow underneath */
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); 
+    }
+
+    .social-links a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #333333;
+      font-weight: bold;
+      display: inline-block; /* This allows the link to move up and down */
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    /* The new hover effect to make the links bounce and change color */
+    .social-links a:hover {
+      color: #8b5cf6; /* Changes the text to a nice purple */
+      transform: translateY(-5px); /* Moves the link up by 5 pixels */
+    }
   </style>
 </head>
 
