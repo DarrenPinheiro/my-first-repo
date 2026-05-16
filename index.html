@@ -4,37 +4,52 @@
 <head>
   <title>Darren Pinheiro's Page</title>
   <style>
-    /* --- NEW FLOATING CARD BACKGROUND --- */
     body {
       font-family: 'Segoe UI', Helvetica, Arial, sans-serif; 
-      /* A beautiful, soft purple-to-blue gradient background */
       background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
       color: #333333; 
       text-align: center;
       margin: 0;
-      
-      /* These 3 lines perfectly center the card in the middle of the screen */
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    /* --- THE WHITE FLOATING CARD --- */
     .card {
       background-color: white;
       padding: 50px 40px;
-      border-radius: 20px; /* Smooth rounded corners */
-      box-shadow: 0 15px 35px rgba(0,0,0,0.1); /* The soft drop shadow */
+      border-radius: 20px; 
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1); 
       max-width: 600px;
-      width: 90%; /* Keeps it looking great on mobile phones */
+      width: 90%; 
     }
 
+    /* --- YOUR NEW ANIMATED NAME --- */
     h1 {
       margin-top: 20px;
       margin-bottom: 5px;
-      font-size: 2.5rem;
+      font-size: 2.8rem; /* Slightly larger so the animation pops! */
+      
+      /* 1. Creates a massive 3-color background */
+      background: linear-gradient(270deg, #8b5cf6, #3b82f6, #ec4899, #8b5cf6);
+      background-size: 300% 300%;
+      
+      /* 2. Uses the background ONLY inside the letters */
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      
+      /* 3. Attaches the animation we built below */
+      animation: glowing-text 6s ease infinite;
     }
+
+    /* This is the engine that moves the colors back and forth */
+    @keyframes glowing-text {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    /* ------------------------------ */
 
     h2 {
       color: #555555;
@@ -44,12 +59,11 @@
     p {
       font-size: 18px;
       line-height: 1.6;
-      color: #555555; /* Slightly softer gray for paragraph text */
+      color: #555555; 
     }
 
-    /* --- YOUR AWESOME ANIMATIONS --- */
     .profile-img {
-      width: 180px; /* Slightly smaller to fit the card beautifully */
+      width: 180px; 
       height: 180px;
       border-radius: 50%;
       object-fit: cover;
@@ -61,8 +75,26 @@
       box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); 
     }
 
+    .joke-btn {
+      background-color: #8b5cf6;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 20px 0;
+      font-weight: bold;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .joke-btn:hover {
+      background-color: #7c3aed; 
+      transform: translateY(-3px); 
+    }
+
     .social-links {
-      margin-top: 40px;
+      margin-top: 30px;
     }
 
     .social-links a {
@@ -86,22 +118,36 @@
   <div class="card">
     
     <img src="Profpic.jpg" alt="Darren Pinheiro" class="profile-img">
+    
     <h1>Darren Pinheiro</h1>
 
     <h2>About Me</h2>
     <p>Welcome to my page! I'm a developer building things from scratch and exploring the world of web development.</p>
 
-<div class="social-links">
+    <button class="joke-btn" onclick="getJoke()">Tell me a Joke</button>
+
+    <div class="social-links">
       <p style="font-size: 14px; color: #888;">Connect with me:</p>
-      
       <a href="https://www.linkedin.com/in/darren-pinheiro-0480241a3" onclick="alert('Temporarily unavailable.'); return false;">LinkedIn</a>
-      
       <a href="https://github.com/DarrenPinheiro/my-first-repo">GitHub</a>
-      
       <a href="mailto:darren.pinhiro@trenser.com" onclick="alert('Currently not able to fetch the email servers.'); return false;">Email Me</a>
     </div>
 
   </div>
+
+  <script>
+    function getJoke() {
+      fetch('https://icanhazdadjoke.com/', {
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert(data.joke);
+      });
+    }
+  </script>
 
 </body>
 
