@@ -14,7 +14,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 40px 0; /* Adds breathing room if the screen is small */
+      padding: 40px 0; 
     }
 
     .card {
@@ -68,7 +68,6 @@
       box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); 
     }
 
-    /* --- NEW: STYLING FOR THE TOOLS SECTION --- */
     .tools-container {
       background-color: #f8f9fa;
       border-radius: 15px;
@@ -85,7 +84,6 @@
       padding-bottom: 10px;
     }
 
-    /* Shared styling for buttons and inputs */
     .action-btn, .calc-input {
       background-color: #8b5cf6;
       color: white;
@@ -125,9 +123,8 @@
       margin-bottom: 20px;
     }
 
-    /* Tip Calculator Results Grid */
     #tip-results {
-      display: none; /* Hidden until the user types something! */
+      display: none; 
       background-color: white;
       border-radius: 8px;
       padding: 15px;
@@ -174,6 +171,12 @@
 
     <div class="tools-container">
       
+      <h3>Dad Joke Generator</h3>
+      <button class="action-btn" onclick="getJoke()">Tell me a Joke</button>
+      <p id="joke-display" class="tool-output">Click the button to load a joke!</p>
+
+      <br>
+
       <h3>Daily Life Hack</h3>
       <button class="action-btn" onclick="getAdvice()">Get Wisdom</button>
       <p id="advice-display" class="tool-output">Click the button for a random life hack!</p>
@@ -201,45 +204,54 @@
   </div>
 
   <script>
-    // --- JAVASCRIPT FOR TOOL 1: THE ADVICE API ---
+    // --- JAVASCRIPT FOR TOOL 1: THE JOKE API ---
+    let jokeCount = 0; // The box that remembers our count!
+
+    function getJoke() {
+      jokeCount = jokeCount + 1; // Add 1 every time it's clicked
+      document.getElementById('joke-display').innerText = "Loading joke...";
+
+      fetch('https://icanhazdadjoke.com/', {
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('joke-display').innerText = "Joke #" + jokeCount + ": " + data.joke;
+      });
+    }
+
+    // --- JAVASCRIPT FOR TOOL 2: THE ADVICE API ---
     function getAdvice() {
       document.getElementById('advice-display').innerText = "Consulting the wise internet...";
 
       fetch('https://api.adviceslip.com/advice')
         .then(response => response.json())
         .then(data => {
-          // The API sends the text inside a box called 'slip', and inside that, a box called 'advice'
           document.getElementById('advice-display').innerText = '"' + data.slip.advice + '"';
         });
     }
 
-    // --- JAVASCRIPT FOR TOOL 2: THE MATH CALCULATOR ---
+    // --- JAVASCRIPT FOR TOOL 3: THE MATH CALCULATOR ---
     function calculateTip() {
-      // 1. Grab whatever number the user typed in
       let inputVal = document.getElementById('bill-amount').value;
       let resultsBox = document.getElementById('tip-results');
 
-      // 2. If the box is empty, hide the results and stop the code
       if (inputVal === "" || inputVal <= 0) {
         resultsBox.style.display = "none";
         return;
       }
 
-      // 3. Turn the text into a real decimal number for math
       let bill = parseFloat(inputVal);
-
-      // 4. Show the results box!
       resultsBox.style.display = "block";
 
-      // 5. Calculate 15% and update the HTML (.toFixed(2) ensures it has 2 decimal places like money)
       document.getElementById('tip-15').innerText = "$" + (bill * 0.15).toFixed(2);
       document.getElementById('total-15').innerText = "$" + (bill * 1.15).toFixed(2);
 
-      // 6. Calculate 18%
       document.getElementById('tip-18').innerText = "$" + (bill * 0.18).toFixed(2);
       document.getElementById('total-18').innerText = "$" + (bill * 1.18).toFixed(2);
 
-      // 7. Calculate 20%
       document.getElementById('tip-20').innerText = "$" + (bill * 0.20).toFixed(2);
       document.getElementById('total-20').innerText = "$" + (bill * 1.20).toFixed(2);
     }
