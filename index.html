@@ -25,31 +25,22 @@
       width: 90%; 
     }
 
-    /* --- YOUR NEW ANIMATED NAME --- */
     h1 {
       margin-top: 20px;
       margin-bottom: 5px;
-      font-size: 2.8rem; /* Slightly larger so the animation pops! */
-      
-      /* 1. Creates a massive 3-color background */
+      font-size: 2.8rem; 
       background: linear-gradient(270deg, #8b5cf6, #3b82f6, #ec4899, #8b5cf6);
       background-size: 300% 300%;
-      
-      /* 2. Uses the background ONLY inside the letters */
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      
-      /* 3. Attaches the animation we built below */
       animation: glowing-text 6s ease infinite;
     }
 
-    /* This is the engine that moves the colors back and forth */
     @keyframes glowing-text {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-    /* ------------------------------ */
 
     h2 {
       color: #555555;
@@ -93,6 +84,17 @@
       transform: translateY(-3px); 
     }
 
+    /* --- NEW: Styling for the Joke Display Box --- */
+    #joke-display {
+      background-color: #f8f9fa; /* Very soft gray */
+      padding: 15px;
+      border-radius: 10px;
+      font-style: italic;
+      color: #555;
+      margin-top: 10px;
+      min-height: 25px; /* Keeps the box from collapsing when empty */
+    }
+
     .social-links {
       margin-top: 30px;
     }
@@ -118,13 +120,14 @@
   <div class="card">
     
     <img src="Profpic.jpg" alt="Darren Pinheiro" class="profile-img">
-    
     <h1>Darren Pinheiro</h1>
 
     <h2>About Me</h2>
     <p>Welcome to my page! I'm a developer building things from scratch and exploring the world of web development.</p>
 
     <button class="joke-btn" onclick="getJoke()">Tell me a Joke</button>
+
+    <p id="joke-display">Click the button to load a joke!</p>
 
     <div class="social-links">
       <p style="font-size: 14px; color: #888;">Connect with me:</p>
@@ -135,13 +138,14 @@
 
   </div>
 
-<script>
-    // 1. We create our "box" (variable) and put the number 0 inside it
+  <script>
     let jokeCount = 0;
 
     function getJoke() {
-      // 2. Every single time the button is clicked, we open the box and add 1
       jokeCount = jokeCount + 1;
+      
+      // BONUS: Change the text to say "Loading..." while we wait for the API!
+      document.getElementById('joke-display').innerText = "Loading joke...";
 
       fetch('https://icanhazdadjoke.com/', {
         headers: {
@@ -150,8 +154,8 @@
       })
       .then(response => response.json())
       .then(data => {
-        // 3. We tell the alert to show the number from our box AND the joke
-        alert("Joke #" + jokeCount + "\n\n" + data.joke);
+        // 2. THE JAVASCRIPT ARROW: We tell JS to grab the "joke-display" box and inject the data!
+        document.getElementById('joke-display').innerText = "Joke #" + jokeCount + ": " + data.joke;
       });
     }
   </script>
