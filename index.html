@@ -135,8 +135,14 @@
 
   </div>
 
-  <script>
+<script>
+    // 1. We create our "box" (variable) and put the number 0 inside it
+    let jokeCount = 0;
+
     function getJoke() {
+      // 2. Every single time the button is clicked, we open the box and add 1
+      jokeCount = jokeCount + 1;
+
       fetch('https://icanhazdadjoke.com/', {
         headers: {
           'Accept': 'application/json'
@@ -144,7 +150,8 @@
       })
       .then(response => response.json())
       .then(data => {
-        alert(data.joke);
+        // 3. We tell the alert to show the number from our box AND the joke
+        alert("Joke #" + jokeCount + "\n\n" + data.joke);
       });
     }
   </script>
